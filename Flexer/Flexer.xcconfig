@@ -1,0 +1,22 @@
+//
+//  Flexer.xcconfig
+//  Flexer
+//
+//  Created by Matt Massicotte on 2020-04-24.
+//  Copyright © 2020 Chime Systems Inc. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT_NAME = Flexer
+PRODUCT_BUNDLE_IDENTIFIER = com.chimehq.Flexer
+PRODUCT_MODULE_NAME = Flexer
+CURRENT_PROJECT_VERSION = 1
+MARKETING_VERSION = 0.1
+
+INFOPLIST_FILE = Flexer/Info.plist
+MACH_O_TYPE = staticlib
+
+MACOSX_DEPLOYMENT_TARGET = 10.11
+SWIFT_VERSION = 5.0

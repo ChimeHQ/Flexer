@@ -9,15 +9,13 @@
 /* Begin PBXBuildFile section */
 		C908A0BC24532B2E00ADE4D9 /* Flexer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C908A0B224532B2D00ADE4D9 /* Flexer.framework */; };
 		C908A0C324532B2E00ADE4D9 /* Flexer.h in Headers */ = {isa = PBXBuildFile; fileRef = C908A0B524532B2D00ADE4D9 /* Flexer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C908A0CE24532C0300ADE4D9 /* SingleTokenLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0CD24532C0300ADE4D9 /* SingleTokenLexer.swift */; };
-		C908A0D024532C1200ADE4D9 /* LexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0CF24532C1200ADE4D9 /* LexerTests.swift */; };
-		C908A0D224532D1000ADE4D9 /* BufferingLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D124532D1000ADE4D9 /* BufferingLexer.swift */; };
-		C908A0D424532F0400ADE4D9 /* StringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D324532F0400ADE4D9 /* StringReader.swift */; };
-		C908A0D624532F2D00ADE4D9 /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D524532F2D00ADE4D9 /* CharacterReader.swift */; };
-		C908A0D8245330D400ADE4D9 /* BasicTextLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D7245330D400ADE4D9 /* BasicTextLexer.swift */; };
-		C908A0DA2453340600ADE4D9 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D92453340600ADE4D9 /* Lexer.swift */; };
+		C908A0D024532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0CF24532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift */; };
+		C908A0D8245330D400ADE4D9 /* BasicTextCharacterLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0D7245330D400ADE4D9 /* BasicTextCharacterLexer.swift */; };
 		C908A0DE2453564500ADE4D9 /* CharacterSet+Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0DD2453564500ADE4D9 /* CharacterSet+Character.swift */; };
-		C908A0E024535E4700ADE4D9 /* UTF16Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0DF24535E4700ADE4D9 /* UTF16Reader.swift */; };
+		C908A0E42453811700ADE4D9 /* LookAheadSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A0E32453811700ADE4D9 /* LookAheadSequence.swift */; };
+		C908A1282454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A1272454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift */; };
+		C908A12C2454AFB300ADE4D9 /* CharacterRangePairIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A12B2454AFB300ADE4D9 /* CharacterRangePairIterator.swift */; };
+		C908A12E2455113800ADE4D9 /* BasicTextCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C908A12D2455113800ADE4D9 /* BasicTextCharacter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,15 +35,13 @@
 		C908A0BB24532B2E00ADE4D9 /* FlexerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlexerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C908A0C224532B2E00ADE4D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C908A0CC24532B5200ADE4D9 /* Flexer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Flexer.xcconfig; sourceTree = "<group>"; };
-		C908A0CD24532C0300ADE4D9 /* SingleTokenLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTokenLexer.swift; sourceTree = "<group>"; };
-		C908A0CF24532C1200ADE4D9 /* LexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerTests.swift; sourceTree = "<group>"; };
-		C908A0D124532D1000ADE4D9 /* BufferingLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferingLexer.swift; sourceTree = "<group>"; };
-		C908A0D324532F0400ADE4D9 /* StringReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringReader.swift; sourceTree = "<group>"; };
-		C908A0D524532F2D00ADE4D9 /* CharacterReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterReader.swift; sourceTree = "<group>"; };
-		C908A0D7245330D400ADE4D9 /* BasicTextLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextLexer.swift; sourceTree = "<group>"; };
-		C908A0D92453340600ADE4D9 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		C908A0CF24532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextCharacterLexerTests.swift; sourceTree = "<group>"; };
+		C908A0D7245330D400ADE4D9 /* BasicTextCharacterLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextCharacterLexer.swift; sourceTree = "<group>"; };
 		C908A0DD2453564500ADE4D9 /* CharacterSet+Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Character.swift"; sourceTree = "<group>"; };
-		C908A0DF24535E4700ADE4D9 /* UTF16Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF16Reader.swift; sourceTree = "<group>"; };
+		C908A0E32453811700ADE4D9 /* LookAheadSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAheadSequence.swift; sourceTree = "<group>"; };
+		C908A1272454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAheadIteratorProtocol.swift; sourceTree = "<group>"; };
+		C908A12B2454AFB300ADE4D9 /* CharacterRangePairIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRangePairIterator.swift; sourceTree = "<group>"; };
+		C908A12D2455113800ADE4D9 /* BasicTextCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextCharacter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +87,12 @@
 				C908A0B524532B2D00ADE4D9 /* Flexer.h */,
 				C908A0B624532B2D00ADE4D9 /* Info.plist */,
 				C908A0CC24532B5200ADE4D9 /* Flexer.xcconfig */,
-				C908A0CD24532C0300ADE4D9 /* SingleTokenLexer.swift */,
-				C908A0D124532D1000ADE4D9 /* BufferingLexer.swift */,
-				C908A0D324532F0400ADE4D9 /* StringReader.swift */,
-				C908A0D524532F2D00ADE4D9 /* CharacterReader.swift */,
-				C908A0D7245330D400ADE4D9 /* BasicTextLexer.swift */,
-				C908A0D92453340600ADE4D9 /* Lexer.swift */,
+				C908A0D7245330D400ADE4D9 /* BasicTextCharacterLexer.swift */,
 				C908A0DD2453564500ADE4D9 /* CharacterSet+Character.swift */,
-				C908A0DF24535E4700ADE4D9 /* UTF16Reader.swift */,
+				C908A0E32453811700ADE4D9 /* LookAheadSequence.swift */,
+				C908A1272454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift */,
+				C908A12B2454AFB300ADE4D9 /* CharacterRangePairIterator.swift */,
+				C908A12D2455113800ADE4D9 /* BasicTextCharacter.swift */,
 			);
 			path = Flexer;
 			sourceTree = "<group>";
@@ -107,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C908A0C224532B2E00ADE4D9 /* Info.plist */,
-				C908A0CF24532C1200ADE4D9 /* LexerTests.swift */,
+				C908A0CF24532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift */,
 			);
 			path = FlexerTests;
 			sourceTree = "<group>";
@@ -222,14 +216,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C908A0D8245330D400ADE4D9 /* BasicTextLexer.swift in Sources */,
-				C908A0D624532F2D00ADE4D9 /* CharacterReader.swift in Sources */,
-				C908A0D224532D1000ADE4D9 /* BufferingLexer.swift in Sources */,
+				C908A0D8245330D400ADE4D9 /* BasicTextCharacterLexer.swift in Sources */,
+				C908A0E42453811700ADE4D9 /* LookAheadSequence.swift in Sources */,
+				C908A12C2454AFB300ADE4D9 /* CharacterRangePairIterator.swift in Sources */,
 				C908A0DE2453564500ADE4D9 /* CharacterSet+Character.swift in Sources */,
-				C908A0CE24532C0300ADE4D9 /* SingleTokenLexer.swift in Sources */,
-				C908A0E024535E4700ADE4D9 /* UTF16Reader.swift in Sources */,
-				C908A0DA2453340600ADE4D9 /* Lexer.swift in Sources */,
-				C908A0D424532F0400ADE4D9 /* StringReader.swift in Sources */,
+				C908A1282454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift in Sources */,
+				C908A12E2455113800ADE4D9 /* BasicTextCharacter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C908A0D024532C1200ADE4D9 /* LexerTests.swift in Sources */,
+				C908A0D024532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

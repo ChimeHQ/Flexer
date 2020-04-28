@@ -10,16 +10,6 @@ import Foundation
 
 public extension CharacterSet {
     func contains(_ character: Character) -> Bool {
-        if character.unicodeScalars.isEmpty {
-            return false
-        }
-
-        for scalar in character.unicodeScalars {
-            if contains(scalar) == false {
-                return false
-            }
-        }
-
-        return true
+        return character.unicodeScalars.allSatisfy({ self.contains($0) })
     }
 }

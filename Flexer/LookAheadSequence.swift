@@ -11,7 +11,7 @@ import Foundation
 public struct LookAheadSequence<Base>: Sequence, LookAheadIteratorProtocol where Base : Sequence {
     public typealias Element = Base.Element
 
-    private let baseSequence: Base
+    let baseSequence: Base
     private var buffer: [Base.Element]
     private var iterator: Base.Iterator
 
@@ -37,11 +37,10 @@ public struct LookAheadSequence<Base>: Sequence, LookAheadIteratorProtocol where
         let delta = distance - buffer.count
         let index = distance - 1
 
-        if delta > 0 {
-            for _ in 0..<delta {
-                if let t = iterator.next() {
-                    buffer.append(t)
-                }
+        // fill buffer as needed
+        for _ in 0..<delta {
+            if let t = iterator.next() {
+                buffer.append(t)
             }
         }
 
@@ -51,11 +50,16 @@ public struct LookAheadSequence<Base>: Sequence, LookAheadIteratorProtocol where
 
         return buffer[index]
     }
-
 }
 
 public extension Sequence {
     var lookAhead: LookAheadSequence<Self> {
         return LookAheadSequence(self)
+    }
+}
+
+extension LookAheadSequence: StringInitializable where Base: StringInitializable {
+    public init(string: String) {
+        self.init(Base(string: string))
     }
 }

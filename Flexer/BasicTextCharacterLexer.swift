@@ -12,9 +12,87 @@ public protocol StringInitializable {
     init(string: String)
 }
 
-public struct BasicTextCharacterIterator: IteratorProtocol {
-    public typealias Index = String.Index
-    public typealias Token = BasicTextCharacter<Index>
+public enum BasicTextCharacterKind: Equatable {
+    case tab
+    case space
+    case newline
+
+    case lowercaseLetter
+    case uppercaseLetter
+    case digit
+    case otherCharacter
+
+    case singleQuote
+    case doubleQuote
+    case backtick
+
+    case openBrace
+    case closeBrace
+    case openBracket
+    case closeBracket
+    case openParen
+    case closeParen
+    case lessThan
+    case greaterThan
+
+    case tilde
+    case exclamation
+    case question
+    case at
+    case percent
+    case caret
+    case ampersand
+    case dollar
+    case star
+    case slash
+    case pound
+    case pipe
+    case backslash
+    case dash
+    case plus
+    case equals
+
+    case period
+    case comma
+    case colon
+    case semicolon
+    case underscore
+}
+
+public typealias BasicTextCharacter = Token<BasicTextCharacterKind>
+
+struct CharacterRangePairIterator: IteratorProtocol {
+    struct CharacterRangePair {
+        public var character: Character
+        public var range: Range<String.Index>
+    }
+
+    let string: String
+    var currentIndex: String.Index
+
+    init(string: String) {
+        self.string = string
+        self.currentIndex = string.startIndex
+    }
+
+    mutating func next() -> CharacterRangePair? {
+        if currentIndex >= string.endIndex {
+            return nil
+        }
+
+        let idx = currentIndex
+
+        currentIndex = string.index(after: currentIndex)
+
+        let char = string[idx]
+        let range = idx..<currentIndex
+
+        return CharacterRangePair(character: char, range: range)
+    }
+}
+
+public struct BasicTextCharacterSequence: Sequence, StringInitializable, IteratorProtocol {
+    public typealias Element = BasicTextCharacter
 
     private let digitSet = CharacterSet.decimalDigits
     private let uppercaseSet = CharacterSet.uppercaseLetters
@@ -25,7 +103,7 @@ public struct BasicTextCharacterIterator: IteratorProtocol {
         self.characterIterator = CharacterRangePairIterator(string: string)
     }
 
-    public mutating func next() -> Token? {
+    public mutating func next() -> Element? {
         guard let pair = characterIterator.next() else {
             return nil
         }
@@ -89,58 +167,4 @@ public struct BasicTextCharacterIterator: IteratorProtocol {
     }
 }
 
-public struct BasicTextCharacterSequence: Sequence, StringInitializable {
-    public typealias Element = BasicTextCharacterIterator.Token
-
-    let string: String
-
-    public init(string: String) {
-        self.string = string
-    }
-
-    public func makeIterator() -> BasicTextCharacterIterator {
-        return BasicTextCharacterIterator(string: string)
-    }
-}
-
-public struct Lexer<BaseSequence: Sequence> {
-    public typealias Token = BaseSequence.Element
-
-    public let tokens: BaseSequence
-    private var lookAheadTokens: LookAheadSequence<BaseSequence>
-
-    public init(sequence: BaseSequence) {
-        self.tokens = sequence
-        self.lookAheadTokens = tokens.lookAhead
-    }
-}
-
-extension Lexer: LookAheadIteratorProtocol {
-    public typealias Element = LookAheadSequence<BaseSequence>.Element
-
-    public mutating func next() -> Element? {
-        return lookAheadTokens.next()
-    }
-
-    public mutating func peek(distance: Int) -> Element? {
-        return lookAheadTokens.peek(distance: distance)
-    }
-}
-
-public typealias BasicTextCharacterLexer = Lexer<BasicTextCharacterSequence>
-
-extension Lexer: StringInitializable where BaseSequence: StringInitializable {
-    public init(string: String) {
-        self.init(sequence: BaseSequence(string: string))
-    }
-}
-
-extension Lexer where BaseSequence == BasicTextCharacterSequence {
-    public mutating func nextUntil(notIn set: Set<BasicTextCharacterKind>) -> BasicTextCharacterSequence.Element? {
-        return nextUntil({ set.contains($0.kind) == false })
-    }
-
-    public mutating func nextUntil(in set: Set<BasicTextCharacterKind>) -> BasicTextCharacterSequence.Element? {
-        return nextUntil({ set.contains($0.kind) })
-    }
-}
+public typealias BasicTextCharacterLexer = LookAheadSequence<BasicTextCharacterSequence>

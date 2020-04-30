@@ -65,7 +65,7 @@ struct ExampleTokenSequence: Sequence, IteratorProtocol, StringInitializable {
 
 class ExampleLexerTests: XCTestCase {
     func testTokens() {
-        let string = "abc d_eF\t\t\tGhi123 JKL 123 **&\n"
+        let string = "abc d_eF\t\t\tGhi123 JKL 123 **&\nz"
         var lexer = ExampleTokenSequence(string: string).lookAhead
 
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .word, range: NSRange(0..<3), in: string))
@@ -80,6 +80,7 @@ class ExampleLexerTests: XCTestCase {
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .whitespace, range: NSRange(25..<26), in: string))
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .symbol, range: NSRange(26..<29), in: string))
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .whitespace, range: NSRange(29..<30), in: string))
+        XCTAssertEqual(lexer.next(), ExampleToken(kind: .word, range: NSRange(30..<31), in: string))
         XCTAssertNil(lexer.next())
     }
 }

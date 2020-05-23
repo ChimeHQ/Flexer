@@ -63,10 +63,12 @@ struct ExampleTokenSequence: Sequence, IteratorProtocol, StringInitializable {
     }
 }
 
+typealias ExampleTokenLexer = LookAheadSequence<ExampleTokenSequence>
+
 class ExampleLexerTests: XCTestCase {
     func testTokens() {
         let string = "abc d_eF\t\t\tGhi123 JKL 123 **&\nz"
-        var lexer = ExampleTokenSequence(string: string).lookAhead
+        var lexer = ExampleTokenLexer(string: string)
 
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .word, range: NSRange(0..<3), in: string))
         XCTAssertEqual(lexer.next(), ExampleToken(kind: .whitespace, range: NSRange(3..<4), in: string))

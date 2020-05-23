@@ -42,6 +42,7 @@
 		C908A1272454AECC00ADE4D9 /* LookAheadIteratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAheadIteratorProtocol.swift; sourceTree = "<group>"; };
 		C908A12F2457239A00ADE4D9 /* ExampleLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLexerTests.swift; sourceTree = "<group>"; };
 		C908A13124574B2E00ADE4D9 /* TokenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProtocol.swift; sourceTree = "<group>"; };
+		C9C421B6247942CD00694622 /* FlexerTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlexerTests.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 				C908A0C224532B2E00ADE4D9 /* Info.plist */,
 				C908A0CF24532C1200ADE4D9 /* BasicTextCharacterLexerTests.swift */,
 				C908A12F2457239A00ADE4D9 /* ExampleLexerTests.swift */,
+				C9C421B6247942CD00694622 /* FlexerTests.xcconfig */,
 			);
 			path = FlexerTests;
 			sourceTree = "<group>";
@@ -410,6 +412,7 @@
 		};
 		C908A0CA24532B2E00ADE4D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C421B6247942CD00694622 /* FlexerTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -428,6 +431,7 @@
 		};
 		C908A0CB24532B2E00ADE4D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C421B6247942CD00694622 /* FlexerTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -9,6 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
+#include "xcconfigs/UniversalFramework_Framework.xcconfig"
+
 PRODUCT_NAME = Flexer
 PRODUCT_BUNDLE_IDENTIFIER = com.chimehq.Flexer
 PRODUCT_MODULE_NAME = Flexer
@@ -19,4 +21,5 @@ INFOPLIST_FILE = Flexer/Info.plist
 MACH_O_TYPE = staticlib
 
 MACOSX_DEPLOYMENT_TARGET = 10.11
+IPHONEOS_DEPLOYMENT_TARGET = 10.0
 SWIFT_VERSION = 5.0

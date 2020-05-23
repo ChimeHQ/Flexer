@@ -48,47 +48,32 @@ extension BasicTextCharacterLexerTests {
     }
 }
 
-//extension LexerTests {
-//    func testSingleCharacterLowercaseRun() {
-//        let string = "a"
-//        var lexer = BasicTextLexer(reader: StringReader(string))
-//
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .lowercaseRun, range: NSRange(0..<1), in: string))
-//        XCTAssertNil(lexer.next())
-//    }
-//
-//    func testMultiCharacterLowercaseRun() {
-//        let string = "abc"
-//        var lexer = BasicTextLexer(reader: StringReader(string))
-//
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .lowercaseRun, range: NSRange(0..<3), in: string))
-//        XCTAssertNil(lexer.next())
-//    }
-//
-//    func testMultiCharacterUppercaseRun() {
-//        let string = "ABC"
-//        var lexer = BasicTextLexer(reader: StringReader(string))
-//
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .uppercaseRun, range: NSRange(0..<3), in: string))
-//        XCTAssertNil(lexer.next())
-//    }
-//
-//    func testMixedCharacterWordRun() {
-//        let string = "AbcDef"
-//        var lexer = BasicTextLexer(reader: StringReader(string))
-//
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .uppercaseRun, range: NSRange(0..<1), in: string))
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .lowercaseRun, range: NSRange(1..<3), in: string))
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .uppercaseRun, range: NSRange(3..<4), in: string))
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .lowercaseRun, range: NSRange(4..<6), in: string))
-//        XCTAssertNil(lexer.next())
-//    }
-//
-//    func testDigitRun() {
-//        let string = "1234567890"
-//        var lexer = BasicTextLexer(reader: StringReader(string))
-//
-//        XCTAssertEqual(lexer.next(), BasicTextToken(kind: .numberRun, range: NSRange(0..<10), in: string))
-//        XCTAssertNil(lexer.next())
-//    }
-//}
+extension BasicTextCharacterLexerTests {
+    func testSingleLowercaseCharacter() {
+        let string = "a"
+        var lexer = BasicTextCharacterLexer(string: string)
+
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .lowercaseLetter, range: NSRange(0..<1), in: string))
+        XCTAssertNil(lexer.next())
+    }
+
+    func testMultiCharacterUppercaseRun() {
+        let string = "ABC"
+        var lexer = BasicTextCharacterLexer(string: string)
+
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .uppercaseLetter, range: NSRange(0..<1), in: string))
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .uppercaseLetter, range: NSRange(1..<2), in: string))
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .uppercaseLetter, range: NSRange(2..<3), in: string))
+        XCTAssertNil(lexer.next())
+    }
+
+    func testDigitRun() {
+        let string = "123"
+        var lexer = BasicTextCharacterLexer(string: string)
+
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .digit, range: NSRange(0..<1), in: string))
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .digit, range: NSRange(1..<2), in: string))
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .digit, range: NSRange(2..<3), in: string))
+        XCTAssertNil(lexer.next())
+    }
+}

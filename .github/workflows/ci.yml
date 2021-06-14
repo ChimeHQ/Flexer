@@ -17,8 +17,6 @@ jobs:
         destination: ["platform=macOS", "platform=iOS Simulator,name=iPhone 8"]
     steps:
       - uses: actions/checkout@v1
-      - name: install swiftlint
-        run: HOMEBREW_NO_INSTALL_CLEANUP=1 brew install swiftlint
       - name: update submodules
         run: git submodule update --init
       - name: xcodebuild test ${{ matrix.destination }}

@@ -9,7 +9,7 @@ Flexer is a small library for building lexers in Swift. It is compatible with al
 - Fully Swift `String`-compatible
 - Based around `Sequence` and `IteratorProtocol` procotols
 
-It turns out that Swift's `Sequence` and `Iterator` concepts work pretty well for processing tokens. They make for a familiar API that also offers a surprsing amount of power. Flexer builds on these concepts with some new protocols that are made specifically for lexing, but are generally applicable to all `Sequence` types.
+It turns out that Swift's `Sequence` and `Iterator` concepts work pretty well for processing tokens. They make for a familiar API that also offers a surprising amount of power. Flexer builds on these concepts with some new protocols that are made specifically for lexing, but are generally applicable to all `Sequence` types.
 
 ## Integration
 
@@ -29,7 +29,7 @@ github "ChimeHQ/Flexer"
 
 ## Look-Ahead
 
-Core to lexing is the ability to look ahead at future tokens without advancing. Flexer implements look-ahead with a protocol called `LookAheadIteratorProtocol`. The whole implemenation is inspired by the `lazy` property of `Sequence`, and works very similarly.
+Core to lexing is the ability to look ahead at future tokens without advancing. Flexer implements look-ahead with a protocol called `LookAheadIteratorProtocol`. The whole implementation is inspired by the `lazy` property of `Sequence`, and works very similarly.
 
 ```swift
 let lookAheadSequence = anySequence.lookAhead

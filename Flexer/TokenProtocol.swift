@@ -26,6 +26,16 @@ public extension TokenProtocol where Index == String.Index {
 
         self.init(kind: kind, range: stringRange)
     }
+
+    init?(kind: Kind, start: BasicTextCharacter, end: BasicTextCharacter?) {
+        guard let end = end else { return nil }
+
+        self.init(kind: kind, range: start.startIndex..<end.endIndex)
+    }
+    
+    func nsRange(in string: String) -> NSRange {
+        return NSRange(range, in: string)
+    }
 }
 
 public extension TokenProtocol {

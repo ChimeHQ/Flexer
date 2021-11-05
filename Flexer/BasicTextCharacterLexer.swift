@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol StringInitializable {
+    var string: String { get }
+    
     init(string: String)
 }
 
@@ -106,7 +108,7 @@ public struct BasicTextCharacterSequence: Sequence, StringInitializable, Iterato
     public var string: String {
         return characterIterator.string
     }
-    
+
     public mutating func next() -> Element? {
         guard let pair = characterIterator.next() else {
             return nil

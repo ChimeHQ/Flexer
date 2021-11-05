@@ -27,6 +27,10 @@ struct ExampleTokenSequence: Sequence, IteratorProtocol, StringInitializable {
         self.lexer = BasicTextCharacterLexer(string: string)
     }
 
+    public var string: String {
+        return lexer.string
+    }
+
     public mutating func next() -> Element? {
         guard let token = lexer.peek() else {
             return nil

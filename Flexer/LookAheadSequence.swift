@@ -62,4 +62,8 @@ extension LookAheadSequence: StringInitializable where Base: StringInitializable
     public init(string: String) {
         self.init(Base(string: string))
     }
+
+    public var string: String {
+        self.baseSequence.string
+    }
 }

@@ -12,7 +12,7 @@ public protocol StringInitializable {
     init(string: String)
 }
 
-public enum BasicTextCharacterKind: Equatable {
+public enum BasicTextCharacterKind: Hashable {
     case tab
     case space
     case newline
@@ -103,6 +103,10 @@ public struct BasicTextCharacterSequence: Sequence, StringInitializable, Iterato
         self.characterIterator = CharacterRangePairIterator(string: string)
     }
 
+    public var string: String {
+        return characterIterator.string
+    }
+    
     public mutating func next() -> Element? {
         guard let pair = characterIterator.next() else {
             return nil

@@ -89,6 +89,12 @@ public class LookAheadSequenceReference<Base>: Sequence, LookAheadIteratorProtoc
     }
 }
 
+extension LookAheadSequenceReference where Base : StringInitializable {
+    public var string: String {
+        return internalSequence.string
+    }
+}
+
 public extension LookAheadSequence {
     /// LookAheadSequence wapper with reference semantics
     var reference: LookAheadSequenceReference<Base> {

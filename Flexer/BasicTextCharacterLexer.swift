@@ -14,6 +14,12 @@ public protocol StringInitializable {
     init(string: String)
 }
 
+public extension StringInitializable {
+    func substring(with range: Range<String.Index>) -> Substring {
+        return string[range]
+    }
+}
+
 public enum BasicTextCharacterKind: Hashable {
     case tab
     case space

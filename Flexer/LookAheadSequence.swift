@@ -64,6 +64,12 @@ extension LookAheadSequence: StringInitializable where Base: StringInitializable
     }
 
     public var string: String {
-        self.baseSequence.string
+        return baseSequence.string
+    }
+}
+
+public extension LookAheadSequence where Base: StringInitializable, Base.Element: TokenProtocol, Base.Element.Index == String.Index {
+    func substring(for token: Base.Element) -> Substring {
+        return substring(with: token.range)
     }
 }

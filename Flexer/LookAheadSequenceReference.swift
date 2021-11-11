@@ -50,6 +50,12 @@ extension LookAheadSequenceReference where Base : StringInitializable {
     }
 }
 
+public extension LookAheadSequenceReference where Base: StringInitializable, Base.Element: TokenProtocol, Base.Element.Index == String.Index {
+    func substring(for token: Base.Element) -> Substring {
+        return internalSequence.substring(for: token)
+    }
+}
+
 public extension LookAheadSequence {
     /// LookAheadSequence wapper with reference semantics
     var reference: LookAheadSequenceReference<Base> {

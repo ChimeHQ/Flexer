@@ -10,4 +10,12 @@ final class LookAheadSequenceReferenceTests: XCTestCase {
         XCTAssertNotNil(lexer.next())
         XCTAssertNil(lexer.next())
     }
+
+    func testGetSubstsring() throws {
+        let string = "a1"
+        let lexer = BasicTextCharacterLexer(string: string).reference
+        let token = try XCTUnwrap(lexer.peek())
+
+        XCTAssertEqual(lexer.substring(for: token), "a")
+    }
 }

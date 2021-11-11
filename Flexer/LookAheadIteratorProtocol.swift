@@ -62,7 +62,8 @@ public extension LookAheadIteratorProtocol {
             }
 
             if try predicate(elem) {
-                return last
+                // on the first iteration, last will always be nil
+                return last ?? elem
             }
 
             last = elem

@@ -76,4 +76,16 @@ extension BasicTextCharacterLexerTests {
         XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .digit, range: NSRange(2..<3), in: string))
         XCTAssertNil(lexer.next())
     }
+
+    func testNextUntilWithNoMatch() {
+        let string = " a "
+        var lexer = BasicTextCharacterLexer(string: string)
+
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .space, range: NSRange(0..<1), in: string))
+        XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .lowercaseLetter, range: NSRange(1..<2), in: string))
+
+        let token = lexer.nextUntil(notIn: [.lowercaseLetter])
+
+        XCTAssertEqual(token, BasicTextCharacter(kind: .space, range: NSRange(2..<3), in: string))
+    }
 }

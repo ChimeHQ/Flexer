@@ -67,37 +67,3 @@ extension LookAheadSequence: StringInitializable where Base: StringInitializable
         self.baseSequence.string
     }
 }
-
-/// LookAheadSequence with reference semantics
-///
-/// This is a class wrapper around LookAheadSequence. Useful if you need to pass
-/// around and operate on a single shared instance.
-public class LookAheadSequenceReference<Base>: Sequence, LookAheadIteratorProtocol where Base : Sequence {
-    public typealias Element = Base.Element
-    var internalSequence: LookAheadSequence<Base>
-
-    public init(_ sequence: LookAheadSequence<Base>) {
-        self.internalSequence = sequence
-    }
-
-    public func next() -> Element? {
-        return internalSequence.next()
-    }
-
-    public func peek(distance: Int = 1) -> Element? {
-        return internalSequence.peek(distance: distance)
-    }
-}
-
-extension LookAheadSequenceReference where Base : StringInitializable {
-    public var string: String {
-        return internalSequence.string
-    }
-}
-
-public extension LookAheadSequence {
-    /// LookAheadSequence wapper with reference semantics
-    var reference: LookAheadSequenceReference<Base> {
-        return LookAheadSequenceReference(self)
-    }
-}

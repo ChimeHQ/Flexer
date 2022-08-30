@@ -16,8 +16,6 @@ jobs:
       matrix:
         destination: ["platform=macOS", "platform=iOS Simulator,name=iPhone 8"]
     steps:
-      - uses: actions/checkout@v1
-      - name: update submodules
-        run: git submodule update --init
+      - uses: actions/checkout@v2
       - name: xcodebuild test ${{ matrix.destination }}
         run: set -o pipefail && xcodebuild test -scheme Flexer -destination "${{ matrix.destination }}" | xcpretty

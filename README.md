@@ -1,6 +1,9 @@
+<div align="center">
+
 [![Build Status][build status badge]][build status]
-[![License][license badge]][license]
 [![Platforms][platforms badge]][platforms]
+
+</div>
 
 # Flexer
 
@@ -108,15 +111,17 @@ struct ExampleTokenSequence: Sequence, IteratorProtocol, StringInitializable {
 typealias ExampleTokenLexer = LookAheadSequence<ExampleTokenSequence>
 ```
 
-### Suggestions or Feedback
+## Contributing and Collaboration
 
-We'd love to hear from you! Get in touch via an issue or pull request.
+I would love to hear from you! Issues, Discussions, or pull requests work great.
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+I prefer collaboration, and would love to find ways to work together if you have a similar project.
+
+I prefer indentation with tabs for improved accessibility. But, I'd rather you use the system you want and make a PR than hesitate because of whitespace.
+
+By participating in this project you agree to abide by the [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 
 [build status]: https://github.com/ChimeHQ/Flexer/actions
 [build status badge]: https://github.com/ChimeHQ/Flexer/workflows/CI/badge.svg
-[license]: https://opensource.org/licenses/BSD-3-Clause
-[license badge]: https://img.shields.io/github/license/ChimeHQ/Flexer
 [platforms]: https://swiftpackageindex.com/ChimeHQ/Flexer
 [platforms badge]: https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FChimeHQ%2FFlexer%2Fbadge%3Ftype%3Dplatforms

@@ -59,7 +59,7 @@ public enum BasicTextCharacterKind: Hashable, Sendable {
     case underscore
 
 	@available(*, deprecated, message: "Please use numberSign")
-	static let pound = BasicTextCharacterKind.numberSign
+	public static let pound = BasicTextCharacterKind.numberSign
 }
 
 public typealias BasicTextCharacter = Token<BasicTextCharacterKind>

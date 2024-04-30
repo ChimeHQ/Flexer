@@ -1,11 +1,3 @@
-//
-//  BasicTextCharacterLexer.swift
-//  Flexer
-//
-//  Created by Matt Massicotte on 2020-04-24.
-//  Copyright © 2020 Chime Systems Inc. All rights reserved.
-//
-
 import Foundation
 
 public protocol StringInitializable {
@@ -20,7 +12,7 @@ public extension StringInitializable {
     }
 }
 
-public enum BasicTextCharacterKind: Hashable {
+public enum BasicTextCharacterKind: Hashable, Sendable {
     case tab
     case space
     case newline
@@ -53,7 +45,7 @@ public enum BasicTextCharacterKind: Hashable {
     case dollar
     case star
     case slash
-    case pound
+    case numberSign
     case pipe
     case backslash
     case dash
@@ -65,6 +57,9 @@ public enum BasicTextCharacterKind: Hashable {
     case colon
     case semicolon
     case underscore
+
+	@available(*, deprecated, message: "Please use numberSign")
+	static let pound = BasicTextCharacterKind.numberSign
 }
 
 public typealias BasicTextCharacter = Token<BasicTextCharacterKind>
@@ -148,7 +143,7 @@ public struct BasicTextCharacterSequence: Sequence, StringInitializable, Iterato
         case "$":  return BasicTextCharacter(kind: .dollar, range: range)
         case "*":  return BasicTextCharacter(kind: .star, range: range)
         case "/":  return BasicTextCharacter(kind: .slash, range: range)
-        case "#":  return BasicTextCharacter(kind: .pound, range: range)
+        case "#":  return BasicTextCharacter(kind: .numberSign, range: range)
         case "|":  return BasicTextCharacter(kind: .pipe, range: range)
         case "\\": return BasicTextCharacter(kind: .backslash, range: range)
         case "-":  return BasicTextCharacter(kind: .dash, range: range)

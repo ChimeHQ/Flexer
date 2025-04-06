@@ -13,22 +13,26 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Test
-    runs-on: macos-14
+    runs-on: macOS-15
+    timeout-minutes: 30
     env:
-      DEVELOPER_DIR: /Applications/Xcode_16.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_16.2.app
     strategy:
       matrix:
         destination:
           - "platform=macOS"
-          - "platform=iOS Simulator,name=iPhone 15"
-          - "platform=tvOS Simulator,name=Apple TV"
-          - "platform=visionOS Simulator,name=Apple Vision Pro"
-          - "platform=watchOS Simulator,name=Apple Watch Series 6 (40mm)"
           - "platform=macOS,variant=Mac Catalyst"
-    
+          - "platform=iOS Simulator,name=iPhone 16"
+          - "platform=tvOS Simulator,name=Apple TV"
+          - "platform=watchOS Simulator,name=Apple Watch Series 10 (42mm)"
+          - "platform=visionOS Simulator,name=Apple Vision Pro"    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,14 +40,16 @@ jobs:
         run: set -o pipefail && xcodebuild -scheme Flexer -destination "${{ matrix.destination }}" test | xcbeautify
 
   linux_test:
+  linux_test:
     name: Test Linux
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install swiftly
-        run: curl -L https://swiftlang.github.io/swiftly/swiftly-install.sh | bash -s -- -y
-      - name: Install the latest Swift toolchain
-        run: swiftly install latest
+      - name: Swiftly
+        uses: vapor/swiftly-action@v0.2.0
+        with:
+          toolchain: 6.0.3
       - name: Test
         run: swift test

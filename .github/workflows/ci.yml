@@ -40,7 +40,6 @@ jobs:
         run: set -o pipefail && xcodebuild -scheme Flexer -destination "${{ matrix.destination }}" test | xcbeautify
 
   linux_test:
-  linux_test:
     name: Test Linux
     runs-on: ubuntu-latest
     timeout-minutes: 30

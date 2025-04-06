@@ -1,11 +1,3 @@
-//
-//  BasicTextCharacterLexerTests.swift
-//  FlexerTests
-//
-//  Created by Matt Massicotte on 2020-04-24.
-//  Copyright © 2020 Chime Systems Inc. All rights reserved.
-//
-
 import XCTest
 @testable import Flexer
 
@@ -28,6 +20,15 @@ class BasicTextCharacterLexerTests: XCTestCase {
         XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .tab, range: NSRange(0..<1), in: string))
         XCTAssertNil(lexer.peek())
     }
+	
+	func testPeekFurtherAndThenCloser() {
+		let string: String = "a1"
+		var lexer = BasicTextCharacterLexer(string: string)
+
+		XCTAssertEqual(lexer.peek(distance: 2), BasicTextCharacter(kind: .digit, range: NSRange(1..<2), in: string))
+		XCTAssertEqual(lexer.peek(distance: 1), BasicTextCharacter(kind: .lowercaseLetter, range: NSRange(0..<1), in: string))
+		XCTAssertEqual(lexer.peek(distance: 2), BasicTextCharacter(kind: .digit, range: NSRange(1..<2), in: string))
+	}
 }
 
 extension BasicTextCharacterLexerTests {

@@ -46,7 +46,6 @@ public struct LookAheadSequence<Base>: Sequence, LookAheadIteratorProtocol where
             }
         }
 
-
         if index >= buffer.endIndex {
             return nil
         }

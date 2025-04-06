@@ -38,11 +38,14 @@ public struct LookAheadSequence<Base>: Sequence, LookAheadIteratorProtocol where
         let index = distance - 1
 
         // fill buffer as needed
-        for _ in 0..<delta {
-            if let t = iterator.next() {
-                buffer.append(t)
+        if delta > 0 {
+            for _ in 0..<delta {
+                if let t = iterator.next() {
+                    buffer.append(t)
+                }
             }
         }
+
 
         if index >= buffer.endIndex {
             return nil

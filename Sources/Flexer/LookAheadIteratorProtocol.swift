@@ -18,7 +18,7 @@ public extension LookAheadIteratorProtocol {
     }
 
     mutating func peekUntil(_ predicate: (Element) -> Bool, limit: Int = Int.max) -> Bool {
-        for _ in 0..<limit {
+        for _ in 0 ..< limit {
             switch peek() {
             case .none:
                 return false
@@ -41,7 +41,6 @@ public extension LookAheadIteratorProtocol {
 
         if try predicate(t) {
             return next()
-
         }
 
         return nil
@@ -54,16 +53,16 @@ public extension LookAheadIteratorProtocol {
     }
 
     mutating func nextUntil(_ predicate: (Element) throws -> Bool, limit: Int = Int.max) rethrows -> Element? {
-        var last: Element? = nil
+        var last: Element?
 
-        for _ in 0..<limit {
+        for _ in 0 ..< limit {
             guard let elem = peek() else {
                 return last
             }
 
             if try predicate(elem) {
                 // on the first iteration, last will always be nil
-                return last ?? elem
+                return last
             }
 
             last = elem
@@ -76,7 +75,7 @@ public extension LookAheadIteratorProtocol {
 
     /// Skips tokens until predicate is true
     @discardableResult
-    mutating func skipUntil(_ predicate: (Element) throws -> Bool, limit: Int = Int.max) rethrows -> Bool {
+    mutating func skipUntil(_ predicate: (Element) throws -> Bool, limit _: Int = Int.max) rethrows -> Bool {
         return try nextUntil(predicate) != nil
     }
 }

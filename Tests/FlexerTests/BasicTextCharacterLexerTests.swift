@@ -1,7 +1,8 @@
-@testable import Flexer
 import XCTest
 
-class BasicTextCharacterLexerTests: XCTestCase {
+import Flexer
+
+final class BasicTextCharacterLexerTests: XCTestCase {
     func testPeekTwiceReturnsSameValue() {
         let string = "\t"
         var lexer = BasicTextCharacterLexer(string: string)
@@ -29,6 +30,18 @@ class BasicTextCharacterLexerTests: XCTestCase {
         XCTAssertEqual(lexer.peek(distance: 1), BasicTextCharacter(kind: .lowercaseLetter, range: NSRange(0 ..< 1), in: string))
         XCTAssertEqual(lexer.peek(distance: 2), BasicTextCharacter(kind: .digit, range: NSRange(1 ..< 2), in: string))
     }
+	
+	func testNewlineSequences() {
+		let string = "\n \r \r\n"
+		var lexer = BasicTextCharacterLexer(string: string)
+
+		XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .newline, range: NSRange(0..<1), in: string))
+		XCTAssertNotNil(lexer.next())
+		XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .newline, range: NSRange(2..<3), in: string))
+		XCTAssertNotNil(lexer.next())
+		XCTAssertEqual(lexer.next(), BasicTextCharacter(kind: .newline, range: NSRange(4..<6), in: string))
+		XCTAssertNil(lexer.next())
+	}
 }
 
 extension BasicTextCharacterLexerTests {

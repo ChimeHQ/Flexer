@@ -97,10 +97,11 @@ struct CharacterRangePairIterator: IteratorProtocol {
 public struct BasicTextCharacterSequence: Sequence, StringInitializable, IteratorProtocol {
     public typealias Element = BasicTextCharacter
 
+	private var characterIterator: CharacterRangePairIterator
     private let digitSet = CharacterSet.decimalDigits
-    private let uppercaseSet = CharacterSet.uppercaseLetters
     private let lowercaseSet = CharacterSet.lowercaseLetters
-    private var characterIterator: CharacterRangePairIterator
+	private let newlineSet = CharacterSet.newlines
+	private let uppercaseSet = CharacterSet.uppercaseLetters
 
     public init(string: String) {
         self.characterIterator = CharacterRangePairIterator(string: string)
@@ -120,7 +121,6 @@ public struct BasicTextCharacterSequence: Sequence, StringInitializable, Iterato
 
         switch char {
         case "\t": return BasicTextCharacter(kind: .tab, range: range)
-        case "\n": return BasicTextCharacter(kind: .newline, range: range)
         case " ":  return BasicTextCharacter(kind: .space, range: range)
         case "'":  return BasicTextCharacter(kind: .singleQuote, range: range)
         case "\"": return BasicTextCharacter(kind: .doubleQuote, range: range)
@@ -158,6 +158,10 @@ public struct BasicTextCharacterSequence: Sequence, StringInitializable, Iterato
             break
         }
 
+		if newlineSet.contains(char) {
+			return BasicTextCharacter(kind: .newline, range: range)
+		}
+		
         if digitSet.contains(char) {
             return BasicTextCharacter(kind: .digit, range: range)
         }

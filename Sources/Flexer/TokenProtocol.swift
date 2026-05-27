@@ -88,3 +88,6 @@ public struct Token<TokenKind: Hashable>: TokenProtocol {
 		self.range = range
 	}
 }
+
+extension Token: Hashable {}
+extension Token: Sendable where TokenKind: Sendable { }

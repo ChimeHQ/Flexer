@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import PackageDescription
 
@@ -9,7 +9,8 @@ let package = Package(
 		.iOS(.v13),
 		.tvOS(.v13),
 		.watchOS(.v6),
-		.macCatalyst(.v13)
+		.macCatalyst(.v13),
+		.visionOS(.v1)
 	],
     products: [
         .library(name: "Flexer", targets: ["Flexer"]),
@@ -20,13 +21,3 @@ let package = Package(
         .testTarget(name: "FlexerTests", dependencies: ["Flexer"]),
     ]
 )
-
-let swiftSettings: [SwiftSetting] = [
-	.enableExperimentalFeature("StrictConcurrency")
-]
-
-for target in package.targets {
-	var settings = target.swiftSettings ?? []
-	settings.append(contentsOf: swiftSettings)
-	target.swiftSettings = settings
-}
